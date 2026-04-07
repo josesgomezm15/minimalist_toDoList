@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Todo App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef1f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .app {
+      background: white;
+      width: 420px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+
+    button {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #999;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .done .checkbox {
+      background: green;
+      border: none;
+    }
+
+    .done span {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .delete {
+      background: transparent;
+      color: #ef4444;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <h1>My Tasks</h1>
+    <div class="subtitle">Stay organized and productive</div>
+
+    <div class="input-group">
+      <input id="taskInput" placeholder="Write a new task...">
+      <button onclick="addTask()">+</button>
+    </div>
+
+    <div id="taskList"></div>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const taskList = document.getElementById("taskList");
+
+    function addTask() {
+      const text = taskInput.value.trim();
+      if (!text) return;
+
+      const task = document.createElement("div");
+      task.className = "task";
+
+      const left = document.createElement("div");
+      left.className = "left";
+
+      const checkbox = document.createElement("div");
+      checkbox.className = "checkbox";
+
+      const span = document.createElement("span");
+      span.textContent = text;
+
+      checkbox.onclick = () => {
+        task.classList.toggle("done");
+      };
+
+      const del = document.createElement("div");
+      del.textContent = "✕";
+      del.className = "delete";
+      del.onclick = () => task.remove();
+
+      left.appendChild(checkbox);
+      left.appendChild(span);
+
+      task.appendChild(left);
+      task.appendChild(del);
+
+      taskList.appendChild(task);
+      taskInput.value = "";
+    }
+
+    taskInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") addTask();
+    });
+  </script>
+
+</body>
+</html>
+
+
+
