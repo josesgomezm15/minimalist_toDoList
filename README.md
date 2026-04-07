@@ -34,7 +34,3 @@ Desarrollo soluciones completas con enfoque en rendimiento, seguridad y experien
 
 Abierto a oportunidades laborales
 
-NOTA
-Este proyecto es ideal para portafolio y demuestra habilidades en desarrollo frontend con JavaScript puro.
-
--->
