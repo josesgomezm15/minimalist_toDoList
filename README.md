@@ -1,6 +1,4 @@
-<!-- ================= README ================= -->
 
-<!--
 TODO APP MINIMALISTA (ESTILO SAAS)
 
 Aplicación de lista de tareas con un diseño moderno, limpio y profesional inspirado en herramientas como Notion y Linear.
